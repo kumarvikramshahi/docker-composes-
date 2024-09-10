@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_container
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - mysqlAirflow:/var/lib/mysql
+    networks:
+      - airflow
+
+volumes:
+  mysqlAirflow:
+    external: true
+
+networks:
+  airflow:
+    external: true
